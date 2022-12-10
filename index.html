@@ -4,26 +4,55 @@
 
 
 <script>
-	pularLinha = (numero) => {
+	const pularLinha = (numero) => {
 		for (let i = 0; i <= numero; i++){
 			document.write('<br>');
 	}
 		}
 		
+	const errou = (version) => {
+			if (version===1){
+				document.write(`<p align="center">Você errou. O número era ${numeroParaAdivinhar}</p>`);
+				document.write(`<center><button onClick="window.location.reload()">Tentar novamente!</button><input type="button" onClick="location.href='https://github.com/flkvio/adivinhe-o-numero'" value="Repositório"/></center>`);
+				pularLinha(1);
+				document.write('<center><img src="https://www.nicepng.com/png/full/18-181112_sad-emoji-transparent-background-sad-smiley-face.png" alt="emoji triste"></center>');
+				tentativas++
+				
+			}
+			else if (version===2){
+			alert(`Você errou. Você tem mais ${3-tentativas} ${(tentativas ===1)?'tentativas':'tentativa' } :(`);
+			tentativas++				
+			}
+	}
+		
+	
+		
 	document.write('<h1 align="center">Advinhe o Número!</h1>');
 	document.write('<h3 align="center">(De 0 até 10)</h6>');
-	const numeroParaAdivinhar = Math.round(Math.random()*10);
-	const numeroChutado = parseInt(prompt('Digite um número'));
-	if (numeroChutado === numeroParaAdivinhar){
-		document.write(`<p align="center">Você acertou o número! O número era ${numeroParaAdivinhar}}</p>`);
-		document.write('<center><button onClick="window.location.reload()">Tentar novamente!</button></center>')
-		pularLinha(1);
-		document.write('<center><img src="https://www.nicepng.com/png/full/32-324680_like-emoji-smiley-face-thumbs-up.png" alt="emoji dando joia"></center>');
+	const pensarEmUmNumero = (n) => {
+	return Math.round(Math.random()*n);
 	}
-	else {
-		document.write(`<p align="center">Você errou. O número era ${numeroParaAdivinhar}</p>`);
-		document.write('<center><button onClick="window.location.reload()">Tentar novamente!</button></center>');
-		pularLinha(1);
-		document.write('<center><img src="https://www.nicepng.com/png/full/18-181112_sad-emoji-transparent-background-sad-smiley-face.png" alt="emoji triste"></center>');
+	
+	const numeroParaAdivinhar = pensarEmUmNumero(10);
+	console.log(numeroParaAdivinhar);
+	var tentativas = 1;
+	while(tentativas <=3){
+	
+		const numeroChutado = parseInt(prompt(`Digite um número. Você tem ${4-tentativas} tentativas. `));
+		if (numeroChutado === numeroParaAdivinhar){
+			document.write(`<p align="center">Você acertou! O número era ${numeroParaAdivinhar}}</p>`);
+			document.write(`<center><button onClick="window.location.reload()">Tentar novamente!</button><input type="button" onClick="location.href='https://github.com/flkvio/adivinhe-o-numero'" value="Repositório"/></center>`)
+			pularLinha(1);
+			document.write('<center><img src="https://www.nicepng.com/png/full/32-324680_like-emoji-smiley-face-thumbs-up.png" width="476" alt="emoji dando joia"></center>');
+			break
+		}
+		else if (tentativas < 3) {
+			errou(2);
+		}
+		
+		else {
+			errou(1);
+		}
 	}
+	
 </script>
