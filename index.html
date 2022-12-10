@@ -16,10 +16,12 @@
 	const numeroChutado = parseInt(prompt('Digite um número'));
 	if (numeroChutado === numeroParaAdivinhar){
 		document.write(`<p align="center">Você acertou o número! O número era ${numeroParaAdivinhar}}</p>`);
+		document.write('<center><button onClick="window.location.reload()">Tentar novamente!</button></center>')
 		document.write('<center><img src="https://www.nicepng.com/png/full/32-324680_like-emoji-smiley-face-thumbs-up.png" alt="emoji dando joia"></center>');
 	}
 	else {
 		document.write(`<p align="center">Você errou. O número era ${numeroParaAdivinhar}</p>`);
+		document.write('<center><button onClick="window.location.reload()">Tentar novamente!</button></center>')
 		document.write('<center><img src="https://www.nicepng.com/png/full/18-181112_sad-emoji-transparent-background-sad-smiley-face.png" alt="emoji triste"></center>');
 	}
 </script>
